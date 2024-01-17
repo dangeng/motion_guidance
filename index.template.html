@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motion Guidance</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro|Maison+Mono" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Motion Guidance: Diffusion-Based Image Editing with Differentiable Motion Estimators</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://dangeng.github.io" target="_blank">Daniel Geng</a>,</span>
+              <span class="author-block">
+                <a href="https://andrewowens.com" target="_blank">Andrew Owens</a></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">University of Michigan</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- arXiv Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" style="padding-bottom: 0px; padding-top: 0px;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-justified">
+        <div class="column is-two-thirds">
+          <p>
+            <b>Motion Guidance</b> is a method to achieve
+            <em>motion-based</em> editing. Given an image to edit
+            and a flow field, indicating where each pixel should go, we produce a new image with the desired motion. 
+          </p>
+          <br>
+          <p>
+            Our method is zero-shot, and supports motions such as 
+            <a href="#rotation">rotations</a>, 
+            <a href="#translation">translations</a>, 
+            <a href="#stretch">stretches</a>, 
+            <a href="#scale">scaling</a>, 
+            <a href="#shrink">shrinking</a>, 
+            <a href="#homography">homographies</a>, 
+            <a href="#deformation1">general</a> 
+            <a href="#deformation2">deformations</a>, 
+            and works on both generated and 
+            <a href="#real">real images</a>.
+          </p>
+          <br>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered content">
+        <h2 class="title is-3">Examples</h2>
+      </div>
+
+      <!-- Cat -->
+      {{cat.v4.tilt30|cat|"a photo of a cat"|rotation}}
+
+      <!-- Apple -->
+      {{apple.v5.right150|appleV5|"an apple on a wooden table"|translation}}
+
+      <!-- Woman 2 -->
+      {{real.woman2.uninvert.growHair|woman2|[real image]|stretch}}
+
+      <!-- Sunflower -->
+      {{sunflower.painting.v0.enlarge|sunflower|"a painting of a sunflower"|scale}}
+
+      <!-- Teapot Smaller -->
+      {{teapot.v8.smaller|teapotSmaller0|"a teapot floating in water"|shrink}}
+
+      <!-- Laptop -->
+      {{laptop.v5.close|laptopV5|"a photo of a laptop"|homography}}
+
+      <!-- Topiary -->
+      {{topiary.v1.heavyFatBG|topiaryV1|"a photo of a topiary"|deformation1}}
+
+      <!-- Waterfall -->
+      {{real.waterfall.uninvert.curveLeft|waterfall|[real image]|deformation2}}
+
+      <!-- Real Cat Rotate -->
+      {{real.cat.uninvert.rotate|realCat|[real image]|real}}
+
+      <div class="has-text-centered content">
+        <h5>
+          <em><b>See <a href="#additional">below</a> for <a href="#additional">more examples</a>.</b></em>
+        </h5>
+      </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered content">
+        <h2 class="title is-3">Method</h2>
+      </div>
+      <div class="columns is-centered has-text-justified">
+        <div class="column is-two-thirds">
+          <p>
+            To achieve <em>motion-based editing</em>, we propose using <em>guidance</em> during sampling in a diffusion model. At each time step in the reverse process, we perturb the noisy estimate in the direction that minimizes a loss function. Effectively, we find a sample that is both likely under the diffusion model, and also has low loss. This loss function is the difference between the desired motion and the current motion of the noisy sample, as estimated an off-the-shelf (differentiable) optical flow network.
+          </p>
+          <br>
+          <p>
+            In order to achieve good results, we find we also need to use a few tricks, including <em>color regularization, reconstruction guidance, and occlusion and edit masking</em>. Please see the paper for additional details.
+          </p>
+          <br>
+          <p>
+            All optical flows used in this paper (with the exception of <a href="#transfer">Motion Transfer</a> results) are generated by composing elementary flows together, and masking with segmentations estimated with SAM. These elementary flows consist of translations, rotations, scaling, and parametarized deformations.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered content">
+        <h2 class="title is-3">Various Motions</h2>
+      </div>
+
+      <div class="columns is-centered has-text-justified">
+        <div class="column is-two-thirds">
+          <p>
+            Below, we show various motions applied to the same source image.
+          </p>
+        </div>
+      </div>
+
+      <!-- Teapot Up -->
+      {{teapot.v8.up150|teapotUp|"a teapot floating in water"|}}
+
+      <!-- Teapot Down -->
+      {{teapot.v8.down150|teapotDown|"a teapot floating in water"|}}
+
+      <!-- Teapot Right -->
+      {{teapot.v8.right150|teapotRight|"a teapot floating in water"|}}
+
+      <!-- Teapot Larger -->
+      {{teapot.v8.larger|teapotLarger|"a teapot floating in water"|}}
+
+      <!-- Teapot Smaller -->
+      {{teapot.v8.smaller|teapotSmaller|"a teapot floating in water"|}}
+
+      <!-- Teapot StretchX-->
+      {{teapot.v8.stretchx|teapotStretchX|"a teapot floating in water"|}}
+
+      <!-- Teapot StretchY -->
+      {{teapot.v8.stretchy|teapotStretchY|"a teapot floating in water"|}}
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered content">
+        <h2 class="title is-3" id="transfer">Motion Transfer</h2>
+      </div>
+
+      <div class="columns is-centered has-text-justified">
+        <div class="column is-two-thirds">
+          <p>
+            In some cases, we can extract motion from video and apply that motion to images. For example, below we extract to motion from the video of the Earth spinning, and apply it to various, real animal images.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="flexWrapper">
+          <div class="outsideWrapper">
+            <div class="insideWrapper">
+              <img src="static/images/earth_1.png" style="border: 1px solid #AAA;">
+            </div>
+          </div>
+          <div class="has-text-centered">
+            <p><b>Frame 1</b></p>
+          </div>
+        </div>
+        <div class="flexWrapper">
+          <div class="outsideWrapper">
+            <div class="insideWrapper">
+              <img src="static/images/earth_2.png" style="border: 1px solid #AAA;">
+            </div>
+          </div>
+          <div class="has-text-centered">
+            <p><b>Frame 2</b></p>
+          </div>
+        </div>
+        <div class="flexWrapper">
+          <div class="outsideWrapper">
+            <div class="insideWrapper">
+              <img src="static/images/earth_flow.png" style="border: 1px solid black;">
+            </div>
+          </div>
+          <div class="has-text-centered">
+            <p><b>Estimated Flow</b></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cat Transfer -->
+      {{real.cat.2.transfer2|catTransfer|[real image]|}}
+
+      <!-- Panda Transfer -->
+      {{real.panda.transfer2|pandaTransfer|[real image]|}}
+
+      <!-- Pug Transfer -->
+      {{real.pug.transfer2|pugTransfer|[real image]|}}
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="has-text-centered content">
+        <h2 class="title is-3" id="additional">Additional Examples</h2>
+      </div>
+
+      <!-- Robot -->
+      {{robot.v2.arm_-30deg|robot|"a photo of a cute humanoid robot on a solid background"|}}
+
+      <!-- River -->
+      {{river.v4.left200|riverV4|"an aerial photo of a river"|}}
+
+      <!-- House -->
+      {{house.v12.up50|houseV12|"a photo of a modern house"|}}
+
+      <!-- Lion v3 -->
+      {{lion.v3.left50|lionV3|"a photo of a lion"|}}
+
+      <!-- Lion v4 -->
+      {{lion.v4.left100|lionV4|"a photo of a lion"|}}
+
+      <!-- Window 1 -->
+      {{real.windows1.uninvert.moveWindow1234|window1|[real image]|}}
+
+      <!-- Window 2 -->
+      {{real.windows2.uninvert.align2|window2|[real image]|}}
+
+      <!-- Woman 1 -->
+      {{real.woman1.uninvert.growHair|woman1|[real image]|}}
+
+      <!-- Tree Enlarge -->
+      {{tree.painting.v7.enlarge|treeEnlarge|"a painting of a lone tree"|}}
+
+      <!-- Tree Skinny -->
+      {{tree.painting.v14.skinny2|treeSkinny|"a painting of a lone tree"|}}
+
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!--<script src="./static/js/flow.js"></script>-->
+  <script src="./static/js/corr.js"></script>
+</body>
+
+</html>
