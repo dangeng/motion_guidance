@@ -36,6 +36,10 @@
               <span class="author-block">University of Michigan</span>
             </div>
 
+            <div class="is-size-6 publication-authors">
+              <span class="author-block">Correspondence to: <span class='rev'>ude.hcimu@gnegd</span></span>
+            </div>
+
             <div class="column has-text-centered">
               <div class="publication-links">
                 <!-- arXiv Link. -->
@@ -90,6 +94,9 @@
             <a href="#real">real images</a>.
           </p>
           <br>
+          <p style="font-size: 12px; margin: 0px 40px 0px 40px;">
+            (If you are interested in using the interactive flow visualizations from this page for your own project, a <a href="https://github.com/dangeng/flow_web_viz" target="_blank">minimum working example is provided here</a>.)
+          </p>
         </div>
       </div>
     </div>
@@ -490,7 +497,7 @@
       <div class="columns is-centered has-text-justified">
         <div class="column is-two-thirds">
           <p>
-            To achieve <em>motion-based editing</em>, we propose using <em>guidance</em> during sampling in a diffusion model. At each time step in the reverse process, we perturb the noisy estimate in the direction that minimizes some loss function. As a loss function, we propose using the difference between the <em>desired motion</em> and the <em>current motion</em> of the noisy sample, with respect to the original image, as estimated by an off-the-shelf (differentiable) optical flow network. Effectively, we find a sample that is likely under the diffusion model, while attaining a low loss. 
+            To achieve <em>motion-based editing</em>, we propose using <em>guidance</em> <a id="ref1back" href="#ref1">[1]</a> during sampling in a diffusion model. At each time step in the reverse process, we perturb the noisy estimate in the direction that minimizes some loss function. As a loss function, we propose using the difference between the <em>desired motion</em> and the <em>current motion</em> of the noisy sample, with respect to the original image, as estimated by an off-the-shelf (differentiable) optical flow network <a id="ref2back" href="#ref2">[2]</a>. Effectively, we find a sample that is likely under the diffusion model, while attaining a low loss. 
           </p>
           <video controls playsinline autoplay muted loop style="margin: 2rem 0rem;">
             <source src="./static/videos/method_half.mp4" type="video/mp4">
@@ -498,7 +505,7 @@
           </video>
           <br>
           <p>
-            In order to achieve good results, we find we also need to use a few tricks, including <em>color regularization, reconstruction guidance, occlusion masking, and edit masking</em>. Please see the paper for additional details.
+            In order to achieve good results, we find we also need to use a few tricks, including <em>color regularization, reconstruction guidance</em> <a id="ref3back" href="#ref3">[3]</a> <a id="ref4back" href="#ref4">[4]</a><em>, occlusion masking, and edit masking</em>. Please see the paper for additional details.
           </p>
           <br><br>
 
@@ -1461,9 +1468,65 @@
   </section>
 
 
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-justified">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3" id="additional">Related Works</h2>
+          <p><a href="https://vcai.mpi-inf.mpg.de/projects/DragGAN/" target="_blank">DragGAN</a> enables drag-based editing of images using pretrained GANs. Users select a point on an image, and indicate where it should move to.</p><br>
+          <p>Inspired by DragGAN, <a href="https://yujun-shi.github.io/projects/dragdiffusion.html" target="_blank">Drag Diffusion</a> and <a href="https://mc-e.github.io/project/DragonDiffusion/" target="_blank">Dragon Diffusion</a> port the drag-based editing capabilities of DragGAN to more versatile diffusion models.</p><br>
+          <p>Related works have proposed guidance on various objectives, including on <a href="https://arxiv.org/abs/2306.05178" target="_blank">an LPIPS loss</a>, <a href="https://arxiv.org/abs/2312.02150" target="_blank">"readout heads"</a>, <a href="https://arxiv.org/abs/2306.00986" target="_blank">the internal features of the diffusion network itself</a>, and <a href="https://arxiv.org/abs/2302.07121" target="_blank">segmentation, detection, and facial recognition networks</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-justified">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3" id="additional">References</h2>
+          <p id="ref1">[1] Dhariwal, Nichol, “<a href="https://arxiv.org/abs/2105.05233" target="_blank">Diffusion Models Beat GANs on Image Synthesis</a>”, NeurIPS, 2021. <a href="#ref1back">↩</a></p>
+          <p id="ref2">[2] Teed, Deng, “<a href="https://arxiv.org/abs/2003.12039" target="_blank">RAFT: Recurrent All-Pairs Field Transforms for Optical Flow</a>”, ECCV, 2020. <a href="#ref2back">↩</a></p>
+          <p id="ref3">[3] Ho <em>et al.</em>, “<a href="https://arxiv.org/abs/2204.03458" target="_blank">Video Diffusion Models</a>”, arXiv, June 2022. <a href="#ref3back">↩</a></p>
+          <p id="ref4">[4] Bansal <em>et al.</em>, “<a href="https://arxiv.org/abs/2302.07121" target="_blank">Universal Guidance for Diffusion Models</a>”, CVPR, 2023. <a href="#ref4back">↩</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <div class="content">
+            <p>
+              This website is licensed under a 
+              <a rel="license" 
+              href="http://creativecommons.org/licenses/by-sa/4.0/"
+              target="_blank">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>, 
+              and is written by <a href="https://keunhong.com/" target="_blank">
+              Keunhong Park</a> for the <a href="https://nerfies.github.io/" 
+              target="_blank">Nerfies</a> project. You are free to use the 
+              <a href="https://github.com/nerfies/nerfies.github.io"
+              target="_blank">source code</a> of this website,
+              but please keep these links in the footer, 
+              as requested by the authors.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
 
   <!--<script src="./static/js/flow.js"></script>-->
-  <script src="./static/js/corr.js"></script>
+  <script src="./static/js/flow_viz.js"></script>
 </body>
 
 </html>

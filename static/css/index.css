@@ -14,44 +14,10 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-
-.footer .icon-link {
-  font-size: 25px;
-  color: #000;
-}
-
 .link-block a {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-
-.dnerf {
-  font-variant: small-caps;
-}
-
-
-.teaser {
-  font-family: 'Google Sans', sans-serif;
-  padding-bottom: 3rem;
-}
-
-
-.publication-title {}
-
-.publication-banner {
-  max-height: parent;
-
-}
-
-.publication-banner video {
-  position: relative;
-  left: auto;
-  top: auto;
-  transform: none;
-  object-fit: fit;
-}
-
-.publication-header .hero-body {}
 
 .publication-title {
   font-family: 'Google Sans', sans-serif;
@@ -60,20 +26,6 @@ body {
 .publication-authors {
   font-family: 'Google Sans', sans-serif;
 }
-
-.publication-venue {
-  color: #555;
-  width: fit-content;
-  font-weight: bold;
-}
-
-.publication-awards {
-  color: #ff3860;
-  width: fit-content;
-  font-weight: bolder;
-}
-
-.publication-authors {}
 
 .publication-authors a {
   color: hsl(204, 86%, 53%) !important;
@@ -87,131 +39,6 @@ body {
   display: inline-block;
 }
 
-.publication-banner img {}
-
-.publication-authors {
-  /*color: #4286f4;*/
-}
-
-.publication-video {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
-
-  overflow: hidden;
-  border-radius: 10px !important;
-}
-
-.publication-video iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.publication-body img {}
-
-.results-carousel {
-  overflow: hidden;
-}
-
-.results-carousel .item {
-  margin: 5px;
-  overflow: hidden;
-  border: 1px solid #bbb;
-  border-radius: 10px;
-  padding: 0;
-  font-size: 0;
-}
-
-.results-carousel video {
-  margin: 0;
-}
-
-
-.interpolation-panel {
-  background: #f5f5f5;
-  border-radius: 10px;
-}
-
-.interpolation-panel .interpolation-image {
-  width: 100%;
-  border-radius: 5px;
-}
-
-.interpolation-video-column {}
-
-.interpolation-panel .slider {
-  margin: 0 !important;
-}
-
-.interpolation-panel .slider {
-  margin: 0 !important;
-}
-
-#interpolation-image-wrapper {
-  width: 100%;
-}
-
-#interpolation-image-wrapper img {
-  border-radius: 5px;
-}
-
-
-
-.illusion-array {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
-
-.grid-video {
-  width: 100%;
-  max-width: 768px;
-}
-
-/*@media screen and (max-width: 544px) {
-  .grid-video {
-    width: 180px;
-  }
-}*/
-
-.slider-item {
-  width: auto !important;
-}
-
-.slider-page {
-  background: #aaa !important;
-  margin-top: 20px;
-}
-
-.slider-container {
-  padding-bottom: 25px;
-}
-
-.center-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-
-.teaser {
-  width: 100%;
-  max-width: 100%;
-  text-align: center;
-}
-
-.grid-video {
-  width: 100%;
-  max-width: 768px;
-}
-
 /* Thanks John Denero! */
 span.rev {
   unicode-bidi: bidi-override;
@@ -220,64 +47,7 @@ span.rev {
 
 
 
-/* my stuff */
-.outsideWrapper {
-  width: 256px;
-  height: 256px;
-}
-
-.insideWrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  margin: auto;
-  border: 1px solid black;
-  /* Add border for better visibility */
-}
-
-.corrViz {
-  height: 100%;
-  width: 100%;
-}
-
-.flowViz {
-  height: 256px;
-  width: 256px;
-}
-
-.canvasBGImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  margin: auto;
-  height: 256px;
-  width: 256px;
-}
-
-.wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.subwrapper {
-  margin: 10px;
-  /* Adjust the margin as needed */
-}
-
-
-
-
-
-
-
+/* css for viz + videos + images */
 .outsideWrapper {
   width: 100%;
   /*min-width: 224px;*/
@@ -323,15 +93,6 @@ canvas {
   max-height: 512px;
 }
 
-.wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.subwrapper {
-  margin: 10px;
-}
-
 .flex {
   display: flex;
   justify-content: center;
@@ -349,11 +110,6 @@ canvas {
   font-family: 'Maison Mono', monospace;
   font-weight: 500;
   font-size: 18px;
-}
-
-.teaser{
-  padding-top: 0px;
-  padding-bottom: 0px;
 }
 
 figcaption {
