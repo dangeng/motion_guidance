@@ -14,7 +14,8 @@ component = '''<div class="has-text-centered" {{ id }}>
       </div>
     </div>
     <div class="has-text-centered">
-      <p><b>Target Flow</b> (Hover over me)</p>
+      <p><b>Target Flow</b></p>
+      <p style="font-size: 10pt;" class="hoverMe">(Hover over me)</p>
     </div>
   </div>
   <div class="flexWrapper">
@@ -25,7 +26,8 @@ component = '''<div class="has-text-centered" {{ id }}>
       </div>
     </div>
     <div class="has-text-centered">
-      <p><b>Source Image</b> (Hover over me)</p>
+      <p><b>Source Image</b></p>
+      <p style="font-size: 10pt;" class="hoverMe">(Hover over me)</p>
     </div>
   </div>
   <div class="flexWrapper">

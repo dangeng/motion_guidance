@@ -36,6 +36,10 @@
               <span class="author-block">University of Michigan</span>
             </div>
 
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">ICLR 2024</span>
+            </div>
+
             <div class="is-size-6 publication-authors">
               <span class="author-block">Correspondence to: <span class='rev'>ude.hcimu@gnegd</span></span>
             </div>
@@ -44,7 +48,7 @@
               <div class="publication-links">
                 <!-- arXiv Link. -->
                 <span class="link-block">
-                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <a href="https://arxiv.org/abs/2401.18085" target="_blank" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="ai ai-arxiv"></i>
                     </span>
@@ -53,7 +57,7 @@
                 </span>
                 <!-- Code Link. -->
                 <span class="link-block">
-                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <a href="https://github.com/dangeng/motion_guidance/" target="_blank" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
@@ -189,48 +193,46 @@
           </p>
 
           <div style="display: flex;">
-            <div style="margin: 1rem 6% 1rem 0px; width: 47%;">
+            <div style="margin: 1rem 2% 1rem 0px; width: 32%;">
               <img src="static/images/colorwheel.png">
               <figcaption>Flow colorwheel for reference. Color represents flow direction, and brightness represents magnitude</figcaption>
             </div>
-            <div style="margin: 1rem 0px 1rem 0px; width: 47%;">
-            <video playsinline autoplay muted loop class="ui">
-              <source src="./static/videos/translate.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <figcaption>Translations: These can be defined by clicking and dragging a vector</figcaption>
+            <div style="margin: 1rem 2% 1rem 0px; width: 32%;">
+              <video playsinline autoplay muted loop class="ui">
+                <source src="./static/videos/translate.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <figcaption><b>Translations:</b> These can be defined by clicking and dragging a vector</figcaption>
             </div>
-          </div>
-          <div style="display: flex;">
-            <div style="margin: 1rem 6% 1rem 0px; width: 47%;">
+            <div style="margin: 1rem 0% 1rem 0px; width: 32%;">
               <video playsinline autoplay muted loop class="ui">
                 <source src="./static/videos/rotate.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
-              <figcaption>Rotations: The initial click defines the center of rotation, and dragging further away increases the angle of rotation</figcaption>
-            </div>
-            <div style="margin: 1rem 0px 1rem 0px; width: 47%;">
-            <video playsinline autoplay muted loop class="ui">
-              <source src="./static/videos/scale.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <figcaption>Scaling: The initial click defines the center of scaling. Dragging outside the circle indicates magnifying, inside the circle indicates shrinking</figcaption>
+              <figcaption><b>Rotations:</b> The initial click defines the center of rotation, and dragging further away increases the angle of rotation</figcaption>
             </div>
           </div>
           <div style="display: flex;">
-            <div style="margin: 1rem 6% 1rem 0px; width: 47%;">
+            <div style="margin: 1rem 2% 1rem 0px; width: 32%;">
+              <video playsinline autoplay muted loop class="ui">
+                <source src="./static/videos/scale.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <figcaption><b>Scaling:</b> The initial click defines the center of scaling. Dragging outside the circle indicates magnifying, inside the circle indicates shrinking</figcaption>
+            </div>
+            <div style="margin: 1rem 2% 1rem 0px; width: 32%;">
               <video playsinline autoplay muted loop class="ui">
                 <source src="./static/videos/scale_1d.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
-              <figcaption>Stretching: Stretches with respect to a line defined by the first click. The notch denotes the boundary between squeezing and stretching</figcaption>
+              <figcaption><b>Stretching:</b> Stretches with respect to a line defined by the first click. The notch denotes the boundary between squeezing and stretching</figcaption>
             </div>
-            <div style="margin: 1rem 0px 1rem 0px; width: 47%;">
-            <video playsinline autoplay muted loop class="ui">
-              <source src="./static/videos/scale_interp.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <figcaption>Interpolated Stretching: We can interpolate between stretches and squeezes, yielding a continuous and complex deformation, as seen in the <a href="#topiary">topiary example</a>.</figcaption>
+            <div style="margin: 1rem 0px 1rem 0px; width: 32%;">
+              <video playsinline autoplay muted loop class="ui">
+                <source src="./static/videos/scale_interp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <figcaption><b>Interpolated Stretching:</b> We can interpolate between stretches and squeezes, yielding a continuous and complex deformation, as seen in the <a href="#topiary">topiary example</a>.</figcaption>
             </div>
           </div>
           
@@ -290,7 +292,7 @@
       <div class="columns is-centered has-text-justified">
         <div class="column is-two-thirds">
           <p>
-            In some cases, we can extract motion from video and apply that motion to images. For example, below we extract to motion from the video of the Earth spinning, and apply it to various, real animal images.
+            In some cases, we can extract motion from video and apply that motion to images. For example, below we extract to motion from the video of the Earth spinning, and apply it to various, real animal images. The extracted flow is not perfectly accurate, and does not perfectly align with the source image, but because we optimize a soft objective, our method is able to produce reasonable results.
           </p>
         </div>
       </div>
@@ -390,7 +392,7 @@
           <h2 class="title is-3" id="additional">Limitations</h2>
           <p>Our method suffers from various limitations that would benefit from further research. Below, we show examples of failure cases. (a) Because we use an off-the-shelf optical flow network, some flow prompts are severely out-of-distribution, such as a vertical flip, and fail. (b) Because we optimize a soft objective, seeking to achieve a likely sample under the diffusion model as well as a sample that minimizes the guidance energy, we sometimes see loss of identity in our generations. (c) The one-step approximation is sometimes unstable, and can diverge catastrophically. Additionally, we inherit the limitations of diffusion models and Universal Guided Diffusion <a id="ref4back" href="#ref4">[4]</a>, such as slow sampling speeds.
 
-          <img src="static/images/failures.png" style="padding: 2rem 3rem 0rem 3rem;">
+          <img src="static/images/failures.png" style="padding: 2rem 0rem 0rem 0rem;">
         </div>
       </div>
     </div>
@@ -419,7 +421,43 @@
           <p id="ref1">[1] Dhariwal, Nichol, “<a href="https://arxiv.org/abs/2105.05233" target="_blank">Diffusion Models Beat GANs on Image Synthesis</a>”, NeurIPS, 2021. <a href="#ref1back">↩</a></p>
           <p id="ref2">[2] Teed, Deng, “<a href="https://arxiv.org/abs/2003.12039" target="_blank">RAFT: Recurrent All-Pairs Field Transforms for Optical Flow</a>”, ECCV, 2020. <a href="#ref2back">↩</a></p>
           <p id="ref3">[3] Ho <em>et al.</em>, “<a href="https://arxiv.org/abs/2204.03458" target="_blank">Video Diffusion Models</a>”, arXiv, June 2022. <a href="#ref3back">↩</a></p>
-          <p id="ref4">[4] Bansal <em>et al.</em>, “<a href="https://arxiv.org/abs/2302.07121" target="_blank">Universal Guidance for Diffusion Models</a>”, CVPR, 2023. <a href="#ref4back">↩</a></p>
+          <p id="ref4">[4] Bansal <em>et al.</em>, “<a href="https://arxiv.org/abs/2302.07121" target="_blank">Universal Guidance for Diffusion Models</a>”, ICLR, 2024. <a href="#ref4back">↩</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop content">
+      <div class="columns is-centered has-text-justified">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Real Image Attribution</h2>
+          <ul>
+            <li>"Dark Haired Woman" by <a href="https://unsplash.com/photos/selective-focus-photo-of-woman-wearing-white-top-and-black-choker-necklace-k_4A59MzZTY" target="_blank">Binh Ly</a></li>
+            <li>"Waterfall" by <a href="https://unsplash.com/photos/waterfalls-surrounded-with-green-leafed-trees-during-daytime-NWrye3NRrKw" target="_blank">Ben Guerin</a></li>
+            <li>"Black and White Cat" by <a href="https://unsplash.com/photos/black-and-white-cat-lying-on-brown-bamboo-chair-inside-room-gKXKBY-C-Dk" target="_blank">Manja Vitolic</a></li>
+            <li>"Orange and White Cat" by <a href="https://unsplash.com/photos/short-haired-white-and-brown-cat-G7kUPmzi80E" target="_blank">Zoë Gayah Jonker</a></li>
+            <li>"Panda" by <a href="https://unsplash.com/photos/a-panda-bear-in-the-grass-ScHhzUSG2x8" target="_blank">Marian Baciu</a></li>
+            <li>"Pug" by <a href="https://unsplash.com/photos/a-small-pug-dog-sitting-on-a-wooden-floor-2s2TPxBIxGc" target="_blank">Mykyta Telenkov</a></li>
+            <li>"Windows" by <a href="https://unsplash.com/photos/low-angle-photo-of-closed-building-windows-3vQBb4C1eHE" target="_blank">Marc Kleen</a></li>
+            <li>"Two Windows" by <a href="https://unsplash.com/photos/two-gray-frame-glass-windows-74LNap6czbo" target="_blank">Evelina Friman</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="columns is-centered has-text-justified">
+        <div class="column is-four-fifths">
+          <h2 class="title">BibTeX</h2>
+          <pre><code>@article{geng2024motion,
+  author    = {Geng, Daniel and Owens, Andrew},
+  title     = {Motion Guidance: Diffusion-Based Image Editing with Differentiable Motion Estimators},
+  journal   = {International Conference on Learning Representations},
+  year      = {2024},
+}</code></pre>
         </div>
       </div>
     </div>
@@ -438,7 +476,7 @@
               href="http://creativecommons.org/licenses/by-sa/4.0/"
               target="_blank">Creative
               Commons Attribution-ShareAlike 4.0 International License</a>, 
-              and is written by <a href="https://keunhong.com/" target="_blank">
+              and was written by <a href="https://keunhong.com/" target="_blank">
               Keunhong Park</a> for the <a href="https://nerfies.github.io/" 
               target="_blank">Nerfies</a> project. You are free to use the 
               <a href="https://github.com/nerfies/nerfies.github.io"
@@ -456,6 +494,16 @@
 
   <!--<script src="./static/js/flow.js"></script>-->
   <script src="./static/js/flow_viz.js"></script>
+
+  <!-- Change call to action under interactive viz if on mobile -->
+  <script>
+    if (navigator.userAgent.match(/Mobile/)) {
+      var paragraphs = document.querySelectorAll('p.hoverMe');
+      paragraphs.forEach(paragraph => 
+        {paragraph.textContent = "(Tap and drag me)"}
+      );
+    }
+  </script>
 </body>
 
 </html>
