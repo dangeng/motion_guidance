@@ -1,0 +1,5 @@
+.DS_store
+__pycache__/
+
+*.pth
+*.npy
