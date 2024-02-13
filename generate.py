@@ -113,7 +113,7 @@ def main():
         edit_mask_path = input_dir / 'flows' / opt.edit_mask_path
         edit_mask = torch.load(edit_mask_path)
     else:
-        edit_mask = torch.ones(1,4,64,64).bool()
+        edit_mask = torch.zeros(1,4,64,64).bool()
 
     # Get guidance schedule
     if opt.guidance_schedule_path:
