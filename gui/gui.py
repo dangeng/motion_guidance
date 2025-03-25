@@ -10,6 +10,7 @@ im_path = './assets/apple.png'
 im_path = './assets/topiary.png'
 im = Image.open(im_path)
 im = np.array(im)
+im = im[...,:-1] # Remove alpha channel
 shade = 0.5
 
 ### START SAM STUFF ###
