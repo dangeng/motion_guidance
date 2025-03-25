@@ -2,6 +2,12 @@
 *.pth
 *.npy
 
+data/
+chkpts/
+results/
+assets/
+configs/
+
 # Macs being macs...
 .DS_store
 
