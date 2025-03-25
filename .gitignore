@@ -1,9 +1,9 @@
-# Macs being macs...
-.DS_store
-
-# Checkpoints and data
+# Project specifig
 *.pth
 *.npy
+
+# Macs being macs...
+.DS_store
 
 # uv stuff
 uv.lock
