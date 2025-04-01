@@ -26,13 +26,13 @@ predictor.set_image(im)
 ### END SAM STUFF ###
 
 if MODE == 'translate':
-    from get_image import get_translation as get_image
+    from vgen.gui.get_image import get_translation as get_image
 elif MODE == 'rotate':
-    from get_image import get_rotation as get_image
+    from vgen.gui.get_image import get_rotation as get_image
 elif MODE == 'scale':
-    from get_image import get_scale as get_image
+    from vgen.gui.get_image import get_scale as get_image
 elif MODE == 'scale_1d':
-    from get_image import get_scale_1d as get_image
+    from vgen.gui.get_image import get_scale_1d as get_image
 
 def show_image(image):
     image_surface = pygame.image.fromstring(image.tobytes(), image.size, image.mode)

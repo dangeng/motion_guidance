@@ -1,6 +1,7 @@
 # Project specifig
 *.pth
 *.npy
+.vscode/
 
 data/
 chkpts/
