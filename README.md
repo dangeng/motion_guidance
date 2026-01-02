@@ -37,11 +37,9 @@ cd chkpts
 wget https://huggingface.co/CompVis/stable-diffusion-v-1-4-original/resolve/main/sd-v1-4.ckpt
 ```
 
-Download images, flows, and other necessary metadata. The result should be a directory called `data` in the root directory of this repo:
+Download images, flows, and other necessary metadata from [Google Drive](https://drive.google.com/file/d/1y2tc5_xBxTukG_LaO9LR5atpNqwGk6mr/view?usp=drive_link) (md5sum: 15e065d5987c3e128b6484dbb879d0b1). The result should be a directory called `data` in the root directory of this repo.
 
 ```
-# md5sum: 15e065d5987c3e128b6484dbb879d0b1
-wget -O motion_guidance_data.tar.gz https://www.dropbox.com/scl/fi/1njzduhyiotlww5ydtfs1/motion_guidance_data.tar.gz?rlkey=qaiovz0ir8n8kdqvwfegw0zld&dl=1
 tar -xvf motion_guidance_data.tar.gz
 rm motion_guidance_data.tar.gz
 ```
